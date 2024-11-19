@@ -306,7 +306,7 @@ public class LdifToIon extends Task implements RunnableTask<LdifToIon.Output> {
             ionWriter.stepIn(IonType.LIST);
             for (ASN1OctetString value : attribute.getRawValues()) {
                 if (Attribute.needsBase64Encoding(value.getValue())) {
-                    ionWriter.addTypeAnnotation("base64");
+                    ionWriter.addTypeAnnotation("\'base64\'");
                     ionWriter.writeString(Base64.getEncoder().encodeToString(value.getValue()));
                 } else {
                     ionWriter.writeString(value.toString());
@@ -365,7 +365,7 @@ public class LdifToIon extends Task implements RunnableTask<LdifToIon.Output> {
             ionWriter.stepIn(IonType.LIST);
             for (ASN1OctetString value : modification.getRawValues()) {
                 if (Attribute.needsBase64Encoding(value.getValue())) {
-                    ionWriter.addTypeAnnotation("base64");
+                    ionWriter.addTypeAnnotation("\'base64\'");
                     ionWriter.writeString(Base64.getEncoder().encodeToString(value.getValue()));
                 } else {
                     ionWriter.writeString(value.toString());

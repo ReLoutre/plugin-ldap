@@ -274,7 +274,7 @@ public class IonToLdif extends Task implements RunnableTask<IonToLdif.Output> {
     private byte[] getStringValue(IonReader ionReader) {
         String value = ionReader.stringValue();
         for (String annotation : ionReader.getTypeAnnotations()) {
-            if (annotation.equals("base64")) {
+            if (annotation.equals("\'base64\'")) {
                 return Base64.getDecoder().decode(value.getBytes(StandardCharsets.UTF_8));
             }
         }
